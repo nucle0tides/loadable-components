@@ -1,10 +1,10 @@
 {
   "name": "@loadable/component",
   "description": "React code splitting made easy.",
-  "version": "5.10.3",
+  "version": "5.10.4",
   "main": "dist/loadable.cjs.js",
   "module": "dist/loadable.esm.js",
-  "repository": "git@github.com:smooth-code/loadable-components.git",
+  "repository": "git@github.com:nucle0tides/loadable-components.git",
   "author": "Greg Bergé <berge.greg@gmail.com>",
   "publishConfig": {
     "access": "public"
