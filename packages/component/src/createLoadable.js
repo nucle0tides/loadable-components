@@ -131,6 +131,7 @@ function createLoadable({ resolve = identity, render, onLoad }) {
           this.state.loading = false
         } catch (error) {
           this.state.error = error
+          return error;
         }
       }
 
