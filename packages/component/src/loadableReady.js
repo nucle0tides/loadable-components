@@ -34,6 +34,8 @@ export default function loadableReady(
   let resolved = false
 
   return new Promise(resolve => {
+    console.log(window);
+    if (!window) console.error("window is not defined");
     window.__LOADABLE_LOADED_CHUNKS__ = window.__LOADABLE_LOADED_CHUNKS__ || []
     const loadedChunks = window.__LOADABLE_LOADED_CHUNKS__
     const originalPush = loadedChunks.push.bind(loadedChunks)
@@ -41,7 +43,7 @@ export default function loadableReady(
     function checkReadyState() {
       if (
         requiredChunks.every(chunk =>
-          loadedChunks.some(([chunks]) => chunks.indexOf(chunk) > -1),
+          loadedChunks.every(([chunks]) => chunks.indexOf(chunk) > -1),
         )
       ) {
         if (!resolved) {
