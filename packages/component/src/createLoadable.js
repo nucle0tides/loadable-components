@@ -21,7 +21,14 @@ const identity = v => v
 
 function createLoadable({ resolve = identity, render, onLoad }) {
   function loadable(loadableConstructor, options = {}) {
-    const ctor = resolveConstructor(loadableConstructor)
+    console.log(loadableConstructor);
+    console.log(loadableConstructor.chunkName());
+    let ctor;
+    try {
+      ctor = resolveConstructor(loadableConstructor)
+    } catch (err) {
+      throw new Error(err)
+    }
     const cache = {}
     function getCacheKey(props) {
       if (options.cacheKey) {
@@ -131,7 +138,7 @@ function createLoadable({ resolve = identity, render, onLoad }) {
           this.state.loading = false
         } catch (error) {
           this.state.error = error
-          return error;
+          throw new Error(error);
         }
       }
 

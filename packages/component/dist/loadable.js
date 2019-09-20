@@ -116,7 +116,16 @@
         options = {};
       }
 
-      var ctor = resolveConstructor(loadableConstructor);
+      console.log(loadableConstructor);
+      console.log(loadableConstructor.chunkName());
+      var ctor;
+
+      try {
+        ctor = resolveConstructor(loadableConstructor);
+      } catch (err) {
+        throw new Error(err);
+      }
+
       var cache = {};
 
       function _getCacheKey(props) {
@@ -236,7 +245,7 @@
             this.state.loading = false;
           } catch (error) {
             this.state.error = error;
-            return error;
+            throw new Error(error);
           }
         };
 
@@ -382,6 +391,7 @@
         preload: true
       }));
     } catch (err) {
+      throw new Error(err);
       console.log(err);
     }
 

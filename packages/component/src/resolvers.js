@@ -13,6 +13,7 @@ export function resolveComponent(loadedModule, { Loadable }) {
       })
     );
   } catch (err) {
+    throw new Error(err);
     console.log(err);
   }
   return Component;
